@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Secrets: keep .env.example tracked as the template
+.env
+.env.*
+!.env.example
+
+# Confidential assignment brief and any other PDFs
+*.pdf
+
+# AWS SAM build output and local deploy config
+.aws-sam/
+samconfig.toml
+packaged.yaml
+
+# Lambda deployment bundles
+*.zip
+
+# Logs and local run output
+logs/
+*.log
+npm-debug.log*
+out/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Editors and OS files
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db

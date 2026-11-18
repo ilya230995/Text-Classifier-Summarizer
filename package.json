@@ -1,0 +1,19 @@
+{
+  "name": "text-classifier-summarizer",
+  "version": "1.0.0",
+  "description": "AWS Lambda in Node.js that classifies short texts into predefined topics or summarizes them in 1-2 sentences.",
+  "type": "module",
+  "main": "app/handler.js",
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@google/genai": "^3.4.0",
+    "dotenv": "^18.0.10"
+  }
+}

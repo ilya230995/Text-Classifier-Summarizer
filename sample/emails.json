@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "subject": "Invoice #1234 overdue",
+    "body": "Dear customer,\n\nOur records show that invoice #1234 for EUR 2,450.00, issued on 1 October, is now 14 days overdue. Please arrange payment by Friday 21 November to avoid a late fee. If you have already paid, please send us the transfer receipt.\n\nBest regards,\nAccounts Receivable"
+  },
+  {
+    "id": 2,
+    "subject": "Weekly engineering sync",
+    "body": "Agenda: 1) review of the v2.3 release and the open bugs, 2) database migration plan for the orders service, 3) post-mortem of Tuesday's API outage. Please update your Jira tickets before the meeting on Thursday at 10:00."
+  },
+  {
+    "id": 3,
+    "subject": "Company retreat announcement",
+    "body": "We invite you to our annual company retreat on 12-14 June in Lillehammer! Expect team-building workshops, a hike and a dinner on Saturday. Please register by 1 May, and feel free to share photos on our social media channels with #TeamRetreat."
+  },
+  {
+    "id": 4,
+    "subject": "",
+    "body": " "
+  },
+  {
+    "id": 5,
+    "subject": "Request for a quote: 50 licenses",
+    "body": "Hi, we are evaluating your platform for our recruitment team and would like a quote for 50 user licenses on an annual plan. Could you also include volume discount options and set up a demo next week?"
+  },
+  {
+    "id": 6,
+    "subject": "Cannot log in to the customer portal",
+    "body": "Hello support, since this morning I get an 'invalid session' error every time I try to log in. I have already reset my password twice and cleared my browser cache. Ticket #88213. Please help, our payroll run is due today."
+  },
+  {
+    "id": 7,
+    "subject": "NDA from Acme Corp for review",
+    "body": "Hi Legal, attached is the mutual NDA from Acme Corp. They want to sign before Friday's partnership meeting. Could you review the liability and governing-law clauses and confirm whether the agreement is GDPR compliant?"
+  },
+  {
+    "id": 8,
+    "subject": "Spring campaign launch plan",
+    "body": "Team, the spring campaign goes live on 3 March. The newsletter, LinkedIn ads and two webinars are scheduled; the brand team will deliver the final visuals by 20 February. Please review the content calendar and send feedback by Wednesday."
+  },
+  {
+    "id": 9,
+    "subject": "Change to payroll date from January",
+    "body": "Dear colleagues, starting in January salaries will be paid on the 25th of each month instead of the last working day. Expense reimbursements will follow the same schedule. Please contact HR if this causes any issues."
+  },
+  {
+    "id": 10,
+    "subject": "INCIDENT: checkout API returning 500 errors",
+    "body": "Production alert: since 14:05 CET the checkout API returns HTTP 500 for about 30% of requests after the latest deployment. The on-call engineer is rolling back release 4.12.1. Next update in 30 minutes."
+  }
+]

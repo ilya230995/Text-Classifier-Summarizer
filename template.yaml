@@ -1,0 +1,72 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Email classifier / summarizer Lambda. Uses the Gemini API (free tier) or an
+  offline keyword backend that needs no API key.
+
+Parameters:
+  Provider:
+    Type: String
+    Default: gemini
+    AllowedValues: [gemini, keyword]
+    Description: Model backend. "keyword" runs fully offline.
+  GeminiApiKey:
+    Type: String
+    NoEcho: true
+    Default: ''
+    Description: >
+      Gemini API key (required when Provider=gemini). Passed as an environment
+      variable for simplicity; in production store it in SSM Parameter Store or
+      Secrets Manager and read it at cold start instead.
+  GeminiModel:
+    Type: String
+    Default: gemini-3.5-flash-lite
+  DefaultMode:
+    Type: String
+    Default: classify
+    AllowedValues: [classify, summarize]
+    Description: Mode used when the event is a bare array of items.
+  FallbackToKeyword:
+    Type: String
+    Default: 'false'
+    AllowedValues: ['true', 'false']
+  LogLevel:
+    Type: String
+    Default: INFO
+    AllowedValues: [DEBUG, INFO, WARN, ERROR]
+
+Resources:
+  ClassifierFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Description: Classifies or summarizes short texts in batches
+      CodeUri: .
+      Handler: app/handler.handler
+      Runtime: nodejs22.x
+      # Graviton (arm64) is ~20% cheaper per GB-second than x86 for the same work.
+      Architectures: [arm64]
+      # The function mostly waits on the model API, so a small memory size is enough.
+      MemorySize: 256
+      # Above the 60 s maximum retry wait for rate limits, with headroom for the calls.
+      Timeout: 120
+      Environment:
+        Variables:
+          PROVIDER: !Ref Provider
+          GEMINI_API_KEY: !Ref GeminiApiKey
+          GEMINI_MODEL: !Ref GeminiModel
+          MODE: !Ref DefaultMode
+          FALLBACK_TO_KEYWORD: !Ref FallbackToKeyword
+          LOG_LEVEL: !Ref LogLevel
+
+  ClassifierLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub /aws/lambda/${ClassifierFunction}
+      # Keep logs (and their cost) bounded.
+      RetentionInDays: 14
+
+Outputs:
+  FunctionName:
+    Value: !Ref ClassifierFunction
+  FunctionArn:
+    Value: !GetAtt ClassifierFunction.Arn

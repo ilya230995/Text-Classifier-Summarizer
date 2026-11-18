@@ -1,0 +1,9 @@
+{
+  "mode": "summarize",
+  "items": [
+    { "id": 1, "subject": "Invoice #1234 overdue", "body": "Dear customer, invoice #1234 for EUR 2,450 is 14 days overdue. Please pay by Friday." },
+    { "id": 2, "subject": "Weekly engineering sync", "body": "Agenda: v2.3 release review, database migration plan, post-mortem of Tuesday's API outage." },
+    { "id": 3, "subject": "Company retreat announcement", "body": "We invite you to our annual retreat on 12-14 June. Share photos on social media with #TeamRetreat." },
+    { "id": 4, "subject": "", "body": " " }
+  ]
+}
